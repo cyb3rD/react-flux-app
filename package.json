@@ -1,0 +1,38 @@
+{
+  "name": "react-flux-app",
+  "version": "1.0.0",
+  "description": "Demo application using React and Flux",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.5"
+  },
+  "devDependencies": {
+    "browserify": "^11.0.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-eslint": "^0.15.0",
+    "jquery": "^2.1.4",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0"
+    "gulp": "^3.9.1",
+    "gulp-connect": "^3.2.3",
+    "gulp-inject": "^4.0.0",
+    "gulp-open": "^2.0.0",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "nodemon": "^1.9.1",
+    "wiredep": "^4.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyb3rD/react-flux-app.git"
+  },
+  "author": "Nikolay Ignatyev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cyb3rD/react-flux-app/issues"
+  },
+  "homepage": "https://github.com/cyb3rD/react-flux-app#readme"
+}
