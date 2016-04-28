@@ -12,3 +12,5 @@ learn basics of Reacts.JS &amp; Flux with Pluralsight course
 * Gulp - Task runner
 
 # Runnig app
+npm install
+gulp
