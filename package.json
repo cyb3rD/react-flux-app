@@ -4,7 +4,10 @@
   "description": "Demo application using React and Flux",
   "main": "index.js",
   "dependencies": {
-    "bootstrap": "^3.3.5"
+    "bootstrap": "^3.3.5",
+    "flux": "^2.0.3",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3"
   },
   "devDependencies": {
     "browserify": "^11.0.1",
@@ -12,7 +15,7 @@
     "gulp-eslint": "^0.15.0",
     "jquery": "^2.1.4",
     "reactify": "^1.1.1",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
     "gulp": "^3.9.1",
     "gulp-connect": "^3.2.3",
     "gulp-inject": "^4.0.0",

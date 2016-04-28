@@ -72,7 +72,7 @@ gulp.task('lint', function() {
 // Add watchers
 gulp.task('watch', function() {
     gulp.watch(config.htmlFiles, ['html']);
-    gulp.watch(config.jsFiles, ['js', 'jslint']);
+    gulp.watch(config.jsFiles, ['js', 'lint']);
 
 });
 
