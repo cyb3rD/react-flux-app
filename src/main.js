@@ -1,8 +1,9 @@
 var $ = require('jquery');
 var React = require('react');
+var Header = require('./components/common/header');
 var Home = require('./components/homePage');
 var About = require('./components/about/aboutPage');
-var Header = require('./components/common/header');
+var Authors = require('./components/authors/authorPage');
 
 // self-invpked function with window as an argument
 (function(win) {
@@ -13,6 +14,7 @@ var Header = require('./components/common/header');
       // sample basic routing for small apps
       switch(this.props.route) {
         case 'about': Child = About; break;
+        case 'authors': Child = Authors; break;
         default: Child = Home;
       }
 
