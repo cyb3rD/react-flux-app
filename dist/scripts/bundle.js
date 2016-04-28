@@ -29053,6 +29053,39 @@ module.exports = About;
 },{"react":157}],159:[function(require,module,exports){
 "use strict";
 
+var React = require('react');
+
+var Header = React.createClass({displayName: "Header",
+  render: function() {
+    return (
+      React.createElement("nav", {className: "navbar navbar-default"}, 
+        React.createElement("div", {className: "container-fluid"}, 
+          /* Navbar logo */
+          React.createElement("div", {className: "navbar-header"}, 
+            React.createElement("a", {className: "navbar-brand", href: "#"}, 
+              React.createElement("img", {className: "header-logo", alt: "Brand logo", src: "img/react-logo.png"})
+            )
+          ), 
+
+          /* Collect the nav links, forms, and other content for toggling */
+          React.createElement("div", {className: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1"}, 
+            React.createElement("ul", {className: "nav navbar-nav"}, 
+              React.createElement("li", null, React.createElement("a", {href: "/"}, "Home")), 
+              React.createElement("li", null, React.createElement("a", {href: "/#about"}, "About"))
+            )
+          )/* /.navbar-collapse */
+
+        )/* /.container-fluid */
+      )
+    );
+  }
+});
+
+module.exports = Header;
+
+},{"react":157}],160:[function(require,module,exports){
+"use strict";
+
 var React = require("react");
 
 // React component
@@ -29069,12 +29102,14 @@ var Home = React.createClass({displayName: "Home",
 
 module.exports = Home;
 
-},{"react":157}],160:[function(require,module,exports){
-$ = JQuery = require('jquery');
+},{"react":157}],161:[function(require,module,exports){
+var $ = require('jquery');
 var React = require('react');
 var Home = require('./components/homePage');
 var About = require('./components/about/aboutPage');
+var Header = require('./components/common/header');
 
+// self-invpked function with window as an argument
 (function(win) {
   "use strict";
   var App = React.createClass({displayName: "App",
@@ -29088,6 +29123,7 @@ var About = require('./components/about/aboutPage');
 
       return (
         React.createElement("div", null, 
+          React.createElement(Header, null), 
           React.createElement(Child, null)
         )
       );
@@ -29100,7 +29136,7 @@ var About = require('./components/about/aboutPage');
   }
 
   win.addEventListener('hashchange', render);
-render();
+  render();
 
 })(window);
-},{"./components/about/aboutPage":158,"./components/homePage":159,"jquery":2,"react":157}]},{},[160]);
+},{"./components/about/aboutPage":158,"./components/common/header":159,"./components/homePage":160,"jquery":2,"react":157}]},{},[161]);

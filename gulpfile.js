@@ -14,10 +14,11 @@ var config = {
     jsFiles: './src/**/*.js',
     htmlFiles: './src/*.html',
     mainJs: './src/main.js',
+    imgFiles: './src/img',
     cssFiles: [
+      'src/css/main.css',
       'node_modules/bootstrap/dist/css/bootstrap.min.css',
       'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
-
     ]
 }
 
@@ -69,12 +70,23 @@ gulp.task('lint', function() {
     .pipe(eslint.format())
 })
 
+// Copy images
+gulp.task('images', function() {
+  gulp.src(config.imgFiles)
+    .pipe(gulp.dest(config.dist + '/img'))
+    .pipe(connect.reload());
+
+  //publish favicon
+  gulp.src('./src/favicon.ico')
+    .pipe(gulp.dest(config.dist));
+});
+
 // Add watchers
 gulp.task('watch', function() {
     gulp.watch(config.htmlFiles, ['html']);
     gulp.watch(config.jsFiles, ['js', 'lint']);
-
+    gulp.watch(config.cssFiles, ['css']);
 });
 
-gulp.task('default', ['html', 'js', 'css', 'open', 'watch']);
+gulp.task('default', ['html', 'js', 'css', 'images', 'lint', 'open', 'watch']);
 
