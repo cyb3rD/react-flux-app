@@ -48857,6 +48857,22 @@ module.exports = NotFoundPage;
 var React = require('react');
 
 var About = React.createClass({displayName: "About",
+  statics: {
+    willTransitionTo: function(transition, params, query, callback) {
+      if (!confirm('Are you sure you want to read ABOUT?')) {
+        transition.about();
+      } else {
+        callback();
+      }
+    },
+
+    willTransitionFrom: function(transition, component) {
+      if (!confirm('Are you sure you want to LEAVE ABOUT page?')) {
+        transition.about();
+      }
+    }
+  },
+
   render: function() {
     return (
         React.createElement("div", {className: "container"}, 
@@ -49038,6 +49054,7 @@ var React = require('react');
 var Router = require('react-router');
 var routes = require('./routes');
 
+// Router.HistoryLocation - for style URL string without #Hash
 Router.run(routes, function(Handler) {
   React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
@@ -49051,13 +49068,15 @@ var Router = require('react-router');
 var DefaultRoute = Router.DefaultRoute;
 var Route = Router.Route;
 var NotFoundRoute = Router.NotFoundRoute;
+var Redirect = Router.Redirect;
 
 var routes = (
     React.createElement(Route, {name: "app", path: "/", handler: require('./components/app')}, 
         React.createElement(DefaultRoute, {handler: require('./components/homePage')}), 
         React.createElement(Route, {name: "authors", handler: require('./components/authors/authorPage')}), 
         React.createElement(Route, {name: "about", handler: require('./components/about/aboutPage')}), 
-        React.createElement(NotFoundRoute, {handler: require('./components/404')})
+        React.createElement(NotFoundRoute, {handler: require('./components/404')}), 
+        React.createElement(Redirect, {from: "about/*", to: "about"})
     )
 );
 
