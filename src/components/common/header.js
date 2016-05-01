@@ -1,6 +1,8 @@
 "use strict";
 
 var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 
 var Header = React.createClass({
   render: function() {
@@ -9,17 +11,17 @@ var Header = React.createClass({
         <div className="container-fluid">
           {/* Navbar logo */}
           <div className="navbar-header">
-            <a className="navbar-brand" href="#">
+            <Link to="app" className="navbar-brand">
               <img className="header-logo" alt="Brand logo" src="img/react-logo.png"/>
-            </a>
+            </Link>
           </div>
 
           {/* Collect the nav links, forms, and other content for toggling */}
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/#about">About</a></li>
-              <li><a href="/#authors">Authors</a></li>
+              <li><Link to="app">Home</Link></li>
+              <li><Link to="about">About</Link></li>
+              <li><Link to="authors">Authors</Link></li>
             </ul>
           </div>{/* /.navbar-collapse */}
 
