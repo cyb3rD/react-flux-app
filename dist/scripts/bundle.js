@@ -48930,11 +48930,23 @@ var AuthorForm = React.createClass({displayName: "AuthorForm",
     return (
       React.createElement("form", null, 
         React.createElement("label", {htmlFor: "firstName"}, "First Name: "), 
-        React.createElement("input", {type: "text", name: "firstName", className: "form-control", placeholder: "Author First Name here...", ref: "firstName", value: ""}), 
+        React.createElement("input", {type: "text", 
+               name: "firstName", 
+               className: "form-control", 
+               placeholder: "Author First Name here...", 
+               ref: "firstName", 
+               value: this.props.author.firstName, 
+               onChange: this.props.onChange}), 
         React.createElement("br", null), 
 
         React.createElement("label", {htmlFor: "lastName"}, "Last Name: "), 
-        React.createElement("input", {type: "text", name: "lastName", className: "form-control", placeholder: "Author Last Name here...", ref: "lastName", value: ""}), 
+        React.createElement("input", {type: "text", 
+               name: "lastName", 
+               className: "form-control", 
+               placeholder: "Author Last Name here...", 
+               ref: "lastName", 
+               value: this.props.author.lastName, 
+               onChange: this.props.onChange}), 
         React.createElement("br", null), 
 
         React.createElement("input", {type: "submit", value: "Save", className: "btn btn-default"})
@@ -49025,14 +49037,30 @@ module.exports = AuthorPage;
 var React = require('react');
 var AuthorForm = require('./authorForm');
 
+//* Top level component - Controller View */
 var ManageAuthorPage = React.createClass({displayName: "ManageAuthorPage",
+  getInitialState: function() {
+    return {
+      author: { id: '', firstName: '', lastName: ''}
+    };
+  },
+  //* Called for every keypress */
+  setAuthorState: function(event) {
+    var field = event.target.name;
+    var value = event.target.value;
+    this.state.author[field] = value;
+    return this.setState({author: this.state.author});
+  },
 
   render: function() {
     return (
       React.createElement("div", {className: "row"}, 
         React.createElement("div", {className: "col-md-3 col-sm4"}, 
           React.createElement("h1", null, "Manage Author"), 
-          React.createElement(AuthorForm, null)
+          /* Pass author state down to the child component*/
+          React.createElement(AuthorForm, {
+            author: this.state.author, 
+            onChange: this.setAuthorState})
         )
       )
     );
